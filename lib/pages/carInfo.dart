@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Carinfo extends StatelessWidget {
-  const Carinfo({super.key});
+  final  String  path ;
+  const Carinfo({super.key, required this.path});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class Carinfo extends StatelessWidget {
             padding: EdgeInsets.all(10),
             child: Column(
               children: [
-                Image.asset("assets/img/R.png"),
+                Image.asset(path),
                 const SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,11 +48,16 @@ class Carinfo extends StatelessWidget {
           ),
           MaterialButton(
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("🤬 Conect Your App to a Backend !")));
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(content: Text("🤬 Conect Your App to a Backend !")),
+              );
             },
             child: Container(
               padding: EdgeInsets.all(14),
-              decoration: BoxDecoration(color: Colors.orange,borderRadius: BorderRadius.circular(10)),
+              decoration: BoxDecoration(
+                color: Colors.orange,
+                borderRadius: BorderRadius.circular(10),
+              ),
               child: Center(child: Text("Book Now !")),
             ),
           ),

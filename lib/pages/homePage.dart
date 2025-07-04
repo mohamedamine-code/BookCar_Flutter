@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
-
-    List <IconData> MyIcon=[
+    List<IconData> MyIcon = [
       Icons.directions_car,
       Icons.motorcycle,
       Icons.directions_bike,
@@ -17,13 +16,13 @@ class HomePage extends StatelessWidget {
       Icons.directions_bus,
     ];
 
-    List <String> MyCar=[
+    List<String> MyCar = [
       'assets/img/AUDI-Q6-S-LINE-1-1024x576.png',
       'assets/img/mythosblack_1_st-removebg-preview.png',
       'assets/img/purepng.com-yellow-audi-caraudicars-961524670899johme.png',
       'assets/img/R.png',
     ];
-    
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 248, 246, 246),
       body: Padding(
@@ -40,9 +39,7 @@ class HomePage extends StatelessWidget {
                     color: Colors.orange,
                     borderRadius: BorderRadius.circular(15),
                   ),
-                  child: Center(
-                    child: Icon(Icons.person),
-                  ),
+                  child: Center(child: Icon(Icons.person)),
                 ),
                 SizedBox(width: 10),
                 Column(
@@ -91,9 +88,7 @@ class HomePage extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: MyIcon.length,
                 itemBuilder: (context, index) {
-                  return Mycontainer(
-                    iconData: MyIcon[index],
-                  );
+                  return Mycontainer(iconData: MyIcon[index]);
                 },
               ),
             ),
@@ -101,17 +96,21 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 440,
               child: GridView.builder(
-                
                 itemCount: MyCar.length,
                 // physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  childAspectRatio: 1/1.1,//width/height
+                  childAspectRatio: 1 / 1.1, //width/height
                   crossAxisCount: 1,
                 ),
                 itemBuilder: (context, index) {
                   return Mycard(
                     onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder:(context)=>Carinfo() ));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Carinfo(
+                          path: MyCar[index],
+                        )),
+                      );
                     },
                     path: MyCar[index],
                   );
